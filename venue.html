@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Venue</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #d8f3dc;
+      text-align: center;
+    }
+
+    /* SECTION BANNERS */
+    .banner {
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      color: white;
+      padding: 18px;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    }
+
+    .section {
+      padding: 30px 15px;
+    }
+
+    .label {
+      font-size: 28px;
+      font-weight: bold;
+      color: #1e3c72;
+      margin-bottom: 20px;
+    }
+
+    /* VIDEO */
+    video {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* IMAGE ZOOM */
+    .zoom-container {
+      overflow: hidden;
+      display: inline-block;
+      border-radius: 15px;
+    }
+
+    .zoom-container img {
+      width: 90%;
+      max-width: 900px;
+      border-radius: 15px;
+      transition: transform 0.4s ease;
+      cursor: zoom-in;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    .zoom-container img:hover {
+      transform: scale(1.15);
+    }
+
+    /* GOOGLE MAP */
+    iframe {
+      width: 90%;
+      height: 550px;
+      border: 0;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-block;
+      margin: 30px 0 40px;
+      padding: 12px 25px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+    }
+
+    .back:hover {
+      background: black;
+    }
+
+    @media (max-width: 600px) {
+      .banner {
+        font-size: 22px;
+      }
+
+      .label {
+        font-size: 22px;
+      }
+
+      iframe {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC -->
+<audio id="bg-music" autoplay loop>
+  <source src="crown-jewel-of-the-south-panglao-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const bgmusic = document.getElementById('bg-music');
+
+  window.addEventListener('loadedmetadata', () => {
+    music.currentTime = 64;
+    music.play();
+  });
+</script>
+
+  <!-- SECTION 1 -->
+  <div class="banner">WHERE TO GO?</div>
+
+  <div class="section">
+    <div class="label">Welcome to Solea Coast Resort Panglao!</div>
+
+    <video autoplay muted loop controls>
+      <source src="venue.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <!-- SECTION 2 -->
+  <div class="banner">MAP TO SOLEA COAST RESORT PANGLAO</div>
+
+  <div class="section">
+   
+
+    <div class="zoom-container">
+      <img src="SolMap.jpg" alt="Map to Solea Coast Resort Panglao">
+    </div>
+  </div>
+
+  <!-- SECTION 3 -->
+  <div class="banner">HOW TO GET THERE?</div>
+
+  <div class="section">
+    <div class="label">Google Map Directions</div>
+
+    <iframe
+      src="https://www.google.com/maps?q=Solea+Coast+Resort+Panglao&output=embed"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+
+    <br><br>
+
+    <!-- OPTIONAL DIRECT LINK -->
+    <a class="back" href="https://www.google.com/maps/dir/Tagbilaran+City,+Bohol/Solea+Coast+Resort+Panglao,+GQX2%2B4Q5,+Panglao,+Bohol/@9.6004829,123.7269894,30489m/data=!3m2!1e3!4b1!4m14!4m13!1m5!1m1!1s0x33aa4db4b0caac5d:0x267a3a6d70572321!2m2!1d123.8670252!2d9.6533997!1m5!1m1!1s0x33abad68a684aa1f:0xc076832e0512651d!2m2!1d123.7519835!2d9.5477723!3e0!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+       target="_blank">
+       Open Full Directions
+    </a>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <a class="back" href="menu.html">← Back to Main Menu</a>
+
+  <script>
+    const music = document.getElementById('bg-music');
+
+    window.addEventListener('load', () => {
+      music.currentTime = 64; /* starts at 46-second mark */
+
+      music.play().catch(() => {
+        document.body.addEventListener('click', () => {
+          music.currentTime = 64; /* starts at 44-second mark */
+          music.play();
+        }, { once: true });
+      });
+    });
+  </script>
+
+<!-- RANDOM MOVING GIF -->
+<div class="floating-gif" id="floatingGif">
+
+  <div class="speech-bubble" id="speechBubble">Click me.</div>
+
+  <img src="Pangs.gif" alt="Deps">
+
+</div>
+
+<style>
+  /* FLOATING GIF */
+  .floating-gif {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    z-index: 9999;
+    transition:
+      top 2s ease,
+      left 2s ease;
+    pointer-events: none;
+  }
+
+  .floating-gif img {
+    width: 200px;
+    height: auto;
+    animation: floatBounce 2s infinite ease-in-out;
+  }
+
+  /* SPEECH BUBBLE */
+  .speech-bubble {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  /* FLOATING EFFECT */
+  @keyframes floatBounce {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .floating-gif img {
+      width: 80px;
+    }
+
+    .speech-bubble {
+      font-size: 12px;
+      padding: 7px 12px;
+      top: -45px;
+    }
+  }
+</style>
+
+<script>
+  const floatingGif = document.getElementById("floatingGif");
+  const speechBubble = document.getElementById("speechBubble");
+
+  function moveGifRandomly() {
+
+    // RANDOM POSITION
+    const maxX = window.innerWidth - 180;
+    const maxY = window.innerHeight - 180;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    floatingGif.style.left = randomX + "px";
+    floatingGif.style.top = randomY + "px";
+  }
+
+  // MOVE EVERY 5 SECONDS
+  setInterval(moveGifRandomly, 5000);
+
+  // INITIAL MOVE
+  moveGifRandomly();
+</script>
+
+</body>
+</html>

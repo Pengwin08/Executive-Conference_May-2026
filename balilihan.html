@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Directory</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #d8f3dc;
+      text-align: center;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: white;
+    }
+
+    header img.logo {
+      width: 45px;
+      height: auto;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+
+    /* LOCATION & TAGLINE */
+    .location {
+      margin-top: 20px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .tagline {
+      font-style: italic;
+      margin-top: 8px;
+      font-size: 16px;
+      padding: 0 15px;
+    }
+
+    .date {
+      margin-top: 6px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    /* SECTION BANNERS */
+    .section-banner {
+      margin: 35px 0 20px;
+      padding: 14px;
+      background: #28a745;
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    /* ROUTES GRID */
+    .routes {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: center;
+      margin: 30px 0;
+    }
+
+    .route-item {
+      text-align: center;
+      width: 90%;
+      max-width: 900px;
+    }
+
+    .route-item img {
+      width: 100%;
+      height: 50vh; /* occupies half page height */
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 4px solid #28a745;
+      box-sizing: border-box;
+    }
+
+    .route-item img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    .route-item .caption {
+      margin-top: 8px;
+      font-weight: bold;
+      font-size: 16px;
+      color: #1e3c72;
+    }
+
+    /* BACK BUTTON */
+    .back {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 22px;
+      background: #333;
+      color: white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background: black;
+    }
+
+    /* FOOTER */
+    footer {
+      font-style: italic;
+      margin: 30px 0 20px;
+      color: #555;
+      font-size: 14px;
+    }
+
+    /* TABLET & DESKTOP */
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 22px;
+      }
+
+      .routes {
+        justify-content: center;
+      }
+
+      .route-item {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BACKGROUND MUSIC -->
+<audio id="bg-music" autoplay loop>
+  <source src="deped-bohol-jingle.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  const bgmusic = document.getElementById('bg-music');
+
+  window.addEventListener('loadedmetadata', () => {
+    music.currentTime = 46.5;
+    music.play();
+  });
+</script>
+
+  <!-- HEADER -->
+  <header>
+    <img src="dpdlogo.jpg" alt="Logo" class="logo">
+    <h1>EXECUTIVE CONFERENCE</h1>
+  </header>
+
+  <!-- LOCATION & TAGLINE -->
+  <div class="location">Welcome to Balilihan!</div>
+  <div class="tagline">Splendor Behind the Greens</div>
+  <div class="date">May 28, 2026</div>
+
+  <!-- SECTION 1 -->
+<div class="section-banner">DepEd Bohol Officials</div>
+
+<div class="routes">
+  <div class="route-item">
+    <div class="slider">
+      <img class="slide active" src="DBO1.jpg" alt="DepEd Bohol Officials">
+      <img class="slide" src="DBO2.jpg" alt="DepEd Bohol Officials">
+      <img class="slide" src="DBO3.jpg" alt="DepEd Bohol Officials">
+      <img class="slide" src="DBO4.jpg" alt="DepEd Bohol Officials">
+
+      <button class="prev" onclick="changeSlide(this, -1)">❮</button>
+      <button class="next" onclick="changeSlide(this, 1)">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2 -->
+<div class="section-banner">LGU Balilihan Officials</div>
+
+<div class="routes">
+  <div class="route-item">
+    <div class="slider">
+      <img class="slide active" src="LGU1.jpg" alt="LGU Balilihan Officials">
+      
+      <button class="prev" onclick="changeSlide(this, -1)">❮</button>
+      <button class="next" onclick="changeSlide(this, 1)">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 -->
+<div class="section-banner">Balilihan District Administrators</div>
+
+<div class="routes">
+  <div class="route-item">
+    <div class="slider">
+      <img class="slide active" src="BDA1.jpg" alt="Balilihan District Administrators">
+      <img class="slide" src="BDA2.jpg" alt="Balilihan District Administrators">
+
+      <button class="prev" onclick="changeSlide(this, -1)">❮</button>
+      <button class="next" onclick="changeSlide(this, 1)">❯</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD THIS CSS -->
+<style>
+  .slider {
+    position: relative;
+    width: 100%;
+  }
+
+  .slide {
+    display: none;
+    width: 100%;
+    height: 50vh;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid #28a745;
+    box-sizing: border-box;
+  }
+
+  .slide.active {
+    display: block;
+  }
+
+  .prev,
+  .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+  }
+
+  .prev {
+    left: 10px;
+  }
+
+  .next {
+    right: 10px;
+  }
+</style>
+
+<!-- ADD THIS SCRIPT -->
+<script>
+  // Store slide indexes and timers for each slider
+  const sliders = document.querySelectorAll('.slider');
+
+  sliders.forEach((slider) => {
+    slider.dataset.index = 0;
+
+    // Start auto sliding
+    startAutoSlide(slider);
+  });
+
+  function showSlide(slider, index) {
+    const slides = slider.querySelectorAll('.slide');
+
+    // Remove active class from all slides
+    slides.forEach(slide => slide.classList.remove('active'));
+
+    // Loop slides
+    if (index < 0) {
+      index = slides.length - 1;
+    }
+
+    if (index >= slides.length) {
+      index = 0;
+    }
+
+    // Show current slide
+    slides[index].classList.add('active');
+
+    // Save current index
+    slider.dataset.index = index;
+  }
+
+  function changeSlide(button, direction) {
+    const slider = button.parentElement;
+
+    let currentIndex = parseInt(slider.dataset.index);
+
+    currentIndex += direction;
+
+    showSlide(slider, currentIndex);
+
+    // Restart auto slide after manual click
+    clearInterval(slider.autoSlide);
+    startAutoSlide(slider);
+  }
+
+  function startAutoSlide(slider) {
+    slider.autoSlide = setInterval(() => {
+      let currentIndex = parseInt(slider.dataset.index);
+      showSlide(slider, currentIndex + 1);
+    }, 1500); // 1500ms = 1.5 seconds
+  }
+</script>
+
+  <!-- BACK -->
+  <a class="back" href="menu.html">← Back to Main Menu</a>
+
+  <!-- FOOTER -->
+  <footer>You are cordially invited!</footer>
+
+  <script>
+    const music = document.getElementById('bg-music');
+
+    window.addEventListener('load', () => {
+      music.currentTime = 46.5; /* starts at 46-second mark */
+
+      music.play().catch(() => {
+        document.body.addEventListener('click', () => {
+          music.currentTime = 46.5; /* starts at 44-second mark */
+          music.play();
+        }, { once: true });
+      });
+    });
+  </script>
+
+<!-- RANDOM MOVING GIF -->
+<div class="floating-gif" id="floatingGif">
+
+  <div class="speech-bubble" id="speechBubble">Click me.</div>
+
+  <img src="Deps.gif" alt="Deps">
+
+</div>
+
+<style>
+  /* FLOATING GIF */
+  .floating-gif {
+    position: fixed;
+    top: 100px;
+    left: 100px;
+    z-index: 9999;
+    transition:
+      top 2s ease,
+      left 2s ease;
+    pointer-events: none;
+  }
+
+  .floating-gif img {
+    width: 200px;
+    height: auto;
+    animation: floatBounce 2s infinite ease-in-out;
+  }
+
+  /* SPEECH BUBBLE */
+  .speech-bubble {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    padding: 10px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    white-space: nowrap;
+  }
+
+  .speech-bubble::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: white transparent transparent transparent;
+  }
+
+  /* FLOATING EFFECT */
+  @keyframes floatBounce {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .floating-gif img {
+      width: 80px;
+    }
+
+    .speech-bubble {
+      font-size: 12px;
+      padding: 7px 12px;
+      top: -45px;
+    }
+  }
+</style>
+
+<script>
+  const floatingGif = document.getElementById("floatingGif");
+  const speechBubble = document.getElementById("speechBubble");
+
+  function moveGifRandomly() {
+
+    // RANDOM POSITION
+    const maxX = window.innerWidth - 180;
+    const maxY = window.innerHeight - 180;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    floatingGif.style.left = randomX + "px";
+    floatingGif.style.top = randomY + "px";
+  }
+
+  // MOVE EVERY 5 SECONDS
+  setInterval(moveGifRandomly, 5000);
+
+  // INITIAL MOVE
+  moveGifRandomly();
+</script>
+
+</body>
+</html>
